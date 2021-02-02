@@ -1,4 +1,5 @@
 ﻿using ApiContracts;
+using AuthService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,15 +13,20 @@ namespace AuthApi.Controllers
     [Route("[controller]")]
     public class AuthController : ControllerBase
     {
+        private readonly AuthInteractor _authInteractor;
 
-        public AuthController()
+        public AuthController(AuthInteractor authInteractor)
         {
+            _authInteractor = authInteractor;
         }
 
         [HttpPost]
-        public IActionResult Post(RegisterRequest registerRequest)
+        public async Task<IActionResult> RegisterUser(RegisterRequest registerRequest)
         {
-            throw new NotImplementedException();
+            var ok = await _authInteractor.RegisterNewUser(registerRequest);
+            if (ok)
+                return NoContent();
+            return BadRequest();
         }
     }
 }

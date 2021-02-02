@@ -1,7 +1,11 @@
+using AuthService;
+using BusinessLogic;
+using DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +29,13 @@ namespace AuthApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AuthDbContext>(opt =>
+                opt.UseSqlServer(Configuration.GetConnectionString("default"),
+                b => b.MigrationsAssembly("AuthApi"))
+            );
+            services.AddScoped<IAuthRepo, AuthRepo>();
+            services.AddScoped<AuthFieldValidator>();
+            services.AddScoped<AuthInteractor>();
             services.AddControllers();
         }
 
