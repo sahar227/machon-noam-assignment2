@@ -29,6 +29,11 @@ namespace AuthApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
+
             services.AddDbContext<AuthDbContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("default"),
                 b => b.MigrationsAssembly("AuthApi"))
@@ -46,12 +51,11 @@ namespace AuthApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseHttpsRedirection();
+            app.UseCors(options => options.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
 
             app.UseRouting();
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

@@ -14,8 +14,10 @@ const submitForm = async (e) => {
         repeatedPassword: formData.get('confirm_password')
     });
 
-
-    console.log(response);
+    if(response.ok)
+        changeStatus('You are registered!')
+    else
+        changeStatus('Registeration failed')
 }
 
 const changeStatus = (message) => {
