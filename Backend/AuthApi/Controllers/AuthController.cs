@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AuthApi.DTO;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace AuthApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post()
+        public IActionResult Post(RegisterDTO registerRequest)
         {
             throw new NotImplementedException();
         }
