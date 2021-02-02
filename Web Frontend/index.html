@@ -9,9 +9,15 @@
     <form onsubmit="submitForm(event)">
         <input type="email" placeholder="your email password" name="email" id="email">
         <br>
-        <input type="password" placeholder="your password" name="password" id="password">
+        <input pattern="^(?=[a-zA-Z0-9]{8,}$)(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).*"
+            id="password"
+            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters and no spaces or special characters"
+            type="password" placeholder="your password" name="password" id="password">
         <br>
-        <input type="password" placeholder="repeat your password" name="repeatedPassword" id="repeatedPassword">
+        <input
+            title="Must be the same as the password field"
+            id="confirm_password"
+            type="password" placeholder="repeat your password" name="confirm_password" id="confirm_password">
         <br>
         <input type="submit" value="Register">
     </form>
