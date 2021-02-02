@@ -6,7 +6,16 @@
     <title>Auth</title>
 </head>
 <body>
-    
+    <form onsubmit="submitForm(event)">
+        <input type="email" placeholder="your email password" name="email" id="email">
+        <br>
+        <input type="password" placeholder="your password" name="password" id="password">
+        <br>
+        <input type="password" placeholder="repeat your password" name="repeatedPassword" id="repeatedPassword">
+        <br>
+        <input type="submit" value="Register">
+    </form>
+    <p id="status"></p>
     <script src="script.js"></script>
 </body>
 </html>
