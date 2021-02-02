@@ -9,5 +9,6 @@ namespace DataAccess
     public interface IAuthRepo
     {
         Task<bool> RegisterUser(User user);
+        bool IsEmailTaken(string email);
     }
 }

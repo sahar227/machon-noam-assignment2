@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace BusinessLogic
 {
-    public class FieldValidator
+    public class AuthFieldValidator
     {
         public bool IsValidEmail(string email)
         {

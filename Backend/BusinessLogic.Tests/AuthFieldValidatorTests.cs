@@ -3,12 +3,12 @@ using Xunit;
 
 namespace BusinessLogic.Tests
 {
-    public class FieldValidatorTests
+    public class AuthFieldValidatorTests
     {
-        private FieldValidator _validator;
-        public FieldValidatorTests()
+        private AuthFieldValidator _validator;
+        public AuthFieldValidatorTests()
         {
-            _validator = new FieldValidator();
+            _validator = new AuthFieldValidator();
         }
 
 
